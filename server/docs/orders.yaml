@@ -1,0 +1,123 @@
+/orders:
+  post:
+    tags: ["Orders"]
+    description: create orders
+    produces:
+      - application/json
+    parameters:
+      - name: title
+        description: title of the orders.
+        in: formData
+        required: true
+        type: string
+      - name: bookingDate
+        description: bookingDate of the orders.
+        in: formData
+        required: true
+        type: string
+      - name: address
+        description: address of the orders.
+        in: formData
+        required: true
+        type: object
+      - name: customer
+        description: customer of the orders.
+        in: formData
+        required: true
+        type: object
+
+    responses:
+      200:
+        description: orders
+        examples:
+          application/json: [{ street: "ABC street", zip: '456', city: "abc city", country: "abc country" }, { name: "ABC name", city: "abc phone", email: "abc email" }]
+
+  get:
+    tags: ["Orders"]
+    description: orders
+    produces:
+      - application/json
+    parameters:
+      - name: page
+        description: page of the orders.
+        in: query
+        required: false
+        type: integer
+      - name: limit
+        description: limit of the orders.
+        in: query
+        required: false
+        type: integer
+    responses:
+      200:
+        description: orders        
+
+/orders/{orderId}:
+  get:
+    tags: ["Orders"]
+    description: orders
+    produces:
+      - application/json
+    parameters:
+      - name: orderId
+        description: ordersid of the orders.
+        in: path
+        required: true
+        type: string     
+    responses:
+      200:
+        description: orders
+
+
+  put:
+    tags: ["Orders"]
+    description: Update a orders
+    produces:
+      - application/json
+    parameters:
+      - name: orderId
+        description: ordersid of the orders.
+        in: path
+        required: true
+        type: string
+      - name: title
+        description: title of the orders.
+        in: formData
+        required: false
+        type: string
+      - name: bookingDate
+        description: bookingDate of the orders.
+        in: formData
+        required: false
+        type: string
+      - name: address
+        description: address of the orders.
+        in: formData
+        required: false
+        type: object
+      - name: customer
+        description: customer of the orders.
+        in: formData
+        required: false
+        type: object
+
+    responses:
+      200:
+        description: orders   
+        examples:
+          application/json: [{ street: "ABC street", zip: '456', city: "abc city", country: "abc country" }, { name: "ABC name", city: "abc phone", email: "abc email" }]
+
+  delete:
+    tags: ["Orders"]
+    description: Delete a orders
+    produces:
+      - application/json
+    parameters:
+      - name: orderId
+        description: ordersid of the orders.
+        in: path
+        required: true
+        type: string 
+    responses:
+      200:
+        description: orders        
